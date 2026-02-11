@@ -1,45 +1,6 @@
 # haxball-bot
 Bot Haxball 24/7
 
-📄 package.json
-
-{
-  "name": "haxball-bot",
-  "version": "1.0.0",
-  "main": "server.js",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "scripts": {
-    "start": "node server.js"
-  }
-}
-
-📄 server.js
-
-const express = require("express");
-const app = express();
-const fs = require("fs");
-const vm = require("vm");
-
-// Carregar headless.js
-const code = fs.readFileSync("./headless.js", "utf8");
-vm.runInThisContext(code);
-
-// Rodar o bot
-require("./bot");
-
-// Endpoint para UptimeRobot
-app.get("/", (req, res) => {
-  res.send("Bot HaxBall 24/7 ativo!");
-});
-
-// Porta padrão do Railway
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
-
-📄 bot.js
-
 // Stats: "Auth" : '["0-Games", "1-Wins", "2-Draws", "3-Losses", "4-Winrate", "5-Goals", "6-Assists", "7-GK", "8-CS", "9-CS%", "10-Role", "11-Nick"]'
 
 /* VARIABLES */
@@ -1661,8 +1622,6 @@ room.onGameTick = function () {
     getStats();
     handleInactivity();
 }
-
-📄 headless.js
 
 [headless.js.js](https://github.com/user-attachments/files/25222974/headless.js.js)
 
