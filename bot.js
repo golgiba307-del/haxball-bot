@@ -5,7 +5,15 @@ const roomName = "🌾 | CENTRO-OESTE | X3 | 🌾";
 const botName = "pamonha";
 const maxPlayers = 30;
 const roomPublic = true;
-const geo = { lat: -16.2106, lon: -49.5991, code: "br" };
+
+const geo = { 
+  lat: -16.2106, 
+  lon: -49.5991, 
+  code: "br" 
+};
+
+// 🔐 TOKEN ADICIONADO
+const token = "thr1.AAAAAGmL9IUbDW_dOqCNHA.0y4JlhbocZg";
 
 const adminPassword = "6200";
 const vipPassword = "vip062";
@@ -26,10 +34,13 @@ HaxballJS().then((HBInit) => {
     maxPlayers: maxPlayers,
     public: roomPublic,
     playerName: botName,
-    geo: geo
+    geo: geo,
+    token: token   
   });
 
   console.log("Sala criada com sucesso!");
+
+  room.setTeamsLock(true);
 
   const frasesgoles = [" Uma pintura", "Joga y joga", "O senhor é mestre do haxball", "Você está on fire 🔥🔥🔥", "Gol incrível de", "Espetáculo, senhores! de", "De que planeta você veio?", "Finalização impressionante de", "Que gol maluco ele acabou de marcar "];
 
