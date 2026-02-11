@@ -1,19 +1,13 @@
-// Stats: "Auth" : '["0-Jogos", "1-Wins", "2-Draws", "3-Losses", "4-Winrate", "5-Goals", "6-Assists", "7-GK", "8-CS", "9-CS%", "10-Role", "11-Nick"]'
+const HaxballJS = require("haxball.js");
 
-/* VARIABLES */
-
-/* ROOM */
-
+// Configurações
 const roomName = "🌾 | CENTRO-OESTE | X3 | 🌾";
 const botName = "pamonha";
-const maxPlayers = 20;
+const maxPlayers = 30;
 const roomPublic = true;
-const geo = [{"lat":-16.2106,"lon":-49.5991,"code":"br"}]; // Geo
-
-const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
+const geo = { lat: -16.2106, lon: -49.5991, code: "br" };
 
 const adminPassword = "6200";
-
 const vipPassword = "vip062";
 
 const playersToSetVIP = 28;
@@ -25,21 +19,34 @@ const timeLimitPractice = 2;
 const scoreLimitx3 = 3;
 const timeLimitx3 = 3;
 
-const frasesgoles = [" Uma pintura", "Joga y joga", "O senhor é mestre do haxball", "Você está on fire 🔥🔥🔥", "Gol incrível de", "Espetáculo, senhores! de", "De que planeta você veio?", "Finalização impressionante de", "Que gol maluco ele acabou de marcar "];
+HaxballJS().then((HBInit) => {
 
-const frasesasis = ["🔥🔥E o passe milimétrico de ", "E onde ele coloca o olho ele coloca o passe", "com um passe tremendo de ", "assistência fenomenal de ", "passe milimétrico de"];
+  const room = HBInit({
+    roomName: roomName,
+    maxPlayers: maxPlayers,
+    public: roomPublic,
+    playerName: botName,
+    geo: geo
+  });
 
-const frasesautogol = ["É pra acabar com o pequi do Goiás, lamentável! ", "Rei dos bagre", "O troll dos trolls é", "Incrível o que esse menino faz, mas seria melhor fazer no gol oposto", "Tinha que ser do bagre", "Ele foi para o gol errado", "Para o outro lado"];
+  console.log("Sala criada com sucesso!");
 
-var isTimeAddedShown = false;
-var isTimeAddedShowndos = false;
-var isTimeAddedShowntres = false;
-var isTimeAddedShowncuatro = false;
-var isTimeAddedShowncinco = false;
-var isTimeAddedShownseis = false;
-var isTimeAddedShownquince = false;
-var isTimeAddedShownsiete = false;
-room.setTeamsLock(true);
+  const frasesgoles = [" Uma pintura", "Joga y joga", "O senhor é mestre do haxball", "Você está on fire 🔥🔥🔥", "Gol incrível de", "Espetáculo, senhores! de", "De que planeta você veio?", "Finalização impressionante de", "Que gol maluco ele acabou de marcar "];
+
+  const frasesasis = ["🔥🔥E o passe milimétrico de ", "E onde ele coloca o olho ele coloca o passe", "com um passe tremendo de ", "assistência fenomenal de ", "passe milimétrico de"];
+
+  const frasesautogol = ["É pra acabar com o pequi do Goiás, lamentável! ", "Rei dos bagre", "O troll dos trolls é", "Incrível o que esse menino faz, mas seria melhor fazer no gol oposto", "Tinha que ser do bagre", "Ele foi para o gol errado", "Para o outro lado"];
+
+  var isTimeAddedShown = false;
+  var isTimeAddedShowndos = false;
+  var isTimeAddedShowntres = false;
+  var isTimeAddedShowncuatro = false;
+  var isTimeAddedShowncinco = false;
+  var isTimeAddedShownseis = false;
+  var isTimeAddedShownquince = false;
+  var isTimeAddedShownsiete = false;
+
+  room.setTeamsLock(true);
 
 /* STADIUM */
 
@@ -1618,4 +1625,5 @@ room.onGameTick = function () {
     getLastTouchOfTheBall();
     getStats();
     handleInactivity();
-}
+ }
+ });
